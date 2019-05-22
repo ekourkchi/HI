@@ -1,0 +1,15 @@
+python sub_catal.py  2557  >  wiki_table_29jan2016.txt 1
+python sub_catal.py  2789  >> wiki_table_29jan2016.txt 2
+python sub_catal.py  39422  >> wiki_table_29jan2016.txt  3
+python sub_catal.py  44182  >> wiki_table_29jan2016.txt 4
+python sub_catal.py  13434  >> wiki_table_29jan2016.txt 5
+python sub_catal.py  12011  >> wiki_table_29jan2016.txt 6 
+python sub_catal.py  12130  >> wiki_table_29jan2016.txt 7
+python sub_catal.py  26484  >> wiki_table_29jan2016.txt 8
+python sub_catal.py  31498  >> wiki_table_29jan2016.txt 9
+python sub_catal.py  41112  >> wiki_table_29jan2016.txt 10 
+python sub_catal.py  3218  >> wiki_table_29jan2016.txt 11
+python sub_catal.py  93051  >> wiki_table_29jan2016.txt 12 
+python sub_catal.py  1315049  >> wiki_table_29jan2016.txt 13
+python sub_catal.py  33529  >> wiki_table_29jan2016.txt 14 
+python sub_catal.py  39833  >> wiki_table_29jan2016.txt  15

@@ -1,0 +1,9 @@
+python make_png_rotate.py
+ sleep 5
+cd /run/media/ehsan/6ccd3c78-12e8-4f00-815d-faf200b314cf/ehsan/db_esn/my_PS_db
+python make_png_rotate.py
+ sleep 5
+cd /run/media/ehsan/6ccd3c78-12e8-4f00-815d-faf200b314cf/ehsan/Home/PanStarrs/Jan/HI/PS_GET_TOOLS 
+python make_TFcalib_INC_DSS.py
+ sleep 5
+cd /run/media/ehsan/6ccd3c78-12e8-4f00-815d-faf200b314cf/ehsan/Home/PanStarrs/Jan/HI/augment
