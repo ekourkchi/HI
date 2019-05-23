@@ -103,7 +103,7 @@ type_leda   = table['type']
 
 ##################################################
 
-inFile  = 'EDD_distance_cf4_v25.csv'   ## 'EDD_distance_cf4_v09.csv'
+inFile  = 'EDD_distance_cf4_v26.csv'   ## 'EDD_distance_cf4_v09.csv'
 table   = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
 pgc     = table['pgc']
 ra      = table['ra']
@@ -114,7 +114,7 @@ b_a     = table['b_a']
 PA      = table['pa']
 Ty      = table['ty']  
 QA_wise = table['QA_wise'] 
-QA_sdss = table['QA_wise'] 
+QA_sdss = table['QA_sdss'] 
 ##################################################
 
 #inFile = 'new_gals.csv'
@@ -137,20 +137,20 @@ location_wise  = '/home/ehsan/db_esn/cf4_wise/data/'
 
 p = 0 
 
-for i in range(len(PGC)):
+for i_lst in range(len(pgc)):
     
-    Getit = False
-    if PGC[i] in pgc:  # already in catalog
+    #Getit = False
+    #if PGC[i] in pgc:  # already in catalog
         
-        i_lst = np.where(PGC[i] == pgc)[0] 
-        if QA_wise[i_lst] == 0: #  and sdss[i]==1:  # need SDSS photometry
+        #i_lst = np.where(PGC[i] == pgc)[0] 
+        if QA_sdss[i_lst] == 1: #  and sdss[i]==1:  # need SDSS photometry
                 Getit = True
-                rag  = ra[i_lst][0] 
-                decg = dec[i_lst][0] 
-                d25g = d25[i_lst][0] 
-                b_ag = b_a[i_lst][0] 
-                pag  = PA[i_lst][0] 
-                tyg  = Ty[i_lst][0] 
+                rag  = ra[i_lst]#[0] 
+                decg = dec[i_lst]#[0] 
+                d25g = d25[i_lst]#[0] 
+                b_ag = b_a[i_lst]#[0] 
+                pag  = PA[i_lst]#[0] 
+                tyg  = Ty[i_lst]#[0] 
     
     
                 #pgcname = 'pgc'+str(pgc[i_lst][0])          
@@ -176,21 +176,21 @@ for i in range(len(PGC)):
                     #if face_on==1: Getit=False
         
                 
-    if Getit:    
-            name = 'pgc'+str(PGC[i])
-            if PGC[i] in PGC_all:   ## This is for WISE
-               i_lst = np.where(PGC[i] == PGC_all)   
-               name = ID_all[i_lst][0]
-            try:
-               print name, rag, decg, d25g, d25g*b_ag, pag, tyg
-            except:
-               print '[Warning]', name
-                
-            p+=1
+        
+                name = 'pgc'+str(pgc[i_lst])
+                #if pgc[i_lst] in PGC_all:   ## This is for WISE
+                   #iii = np.where(pgc[i_lst] == PGC_all)   
+                   #name = ID_all[iii][0]
+                try:
+                   print name, rag, decg, d25g, d25g*b_ag, pag, tyg
+                except:
+                   print '[Warning]', name
+                    
+                p+=1
  
  
     
-print "New TF gals: #", p
+#print "New TF gals: #", p
 
             
 

@@ -264,7 +264,7 @@ def read_note(filename):
 
 
 
-destination = '/media/ehsan/HOURI/wise_photometry/'
+destination = '/home/ehsan/Home/wise_photometry/'
 
 datasets  = []
 locations = []
@@ -272,7 +272,7 @@ locations = []
 location = '/home/ehsan/db_esn/cf4_wise/data/'
 
 
-inFile  = 'augment/EDD_distance_cf4_v22.csv'
+inFile  = 'augment/EDD_distance_cf4_v25.csv'
 table   = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
 pgc     = table['pgc']
 ra      = table['ra']

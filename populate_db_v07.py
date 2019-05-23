@@ -233,12 +233,12 @@ def read_note(filename):
 
 #destination = '/home/ehsan/PanStarrs/EDD_server/public_html/cf4_photometry/sdss_photometry/'
 
-destination = '/media/ehsan/HOURI/sdss_photometry/'
+destination = '/home/ehsan/Home/sdss_photometry/'
 
 location  = '/home/ehsan/db_esn/cf4_sdss/data/'
 
 
-inFile  = 'augment/EDD_distance_cf4_v22.csv'
+inFile  = 'augment/EDD_distance_cf4_v25.csv'
 table   = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
 pgc     = table['pgc']
 ra      = table['ra']
