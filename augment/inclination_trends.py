@@ -27,10 +27,12 @@ def rnd_inc(inc):
 ######################################
 def inc_append(incs, email, inc):
     
-    n = 1
+    n = 0
     if email=='rbtully1@gmail.com': n = 4
     elif email=='ekourkchi@gmail.com': n = 4
-    elif email=='s.eftekharzadeh@gmail.com': n = 1
+    elif email=='s.eftekharzadeh@gmail.com':
+        if inc>50: n=1
+        else: n=0
     elif email=='mokelkea@hawaii.edu': n = 3
     elif email=='chasemu@hawaii.edu': n = 3
     elif email=='jrl2014@hawaii.edu': n = 2
@@ -52,8 +54,16 @@ def inc_append(incs, email, inc):
     elif email=='henri140860@wanadoo.fr': n = 2
     elif email=='joannin.lycee@free.fr': n = 2
     elif email=='bevig434@gmail.com': n = 1
-    elif email=='echarraix69@gmail.com': n = 1
-    
+    elif email=='echarraix69@gmail.com':
+        if inc<85 and inc>50: n=1
+        else: n=0
+    elif email=='pierrefcevey@gmail.com': n = 1
+    elif email=='pierre@macweber.ch': n = 1
+    elif email=='arnaudoech@gmail.com': n = 1
+    elif email=='lionmarm@gmail.com': n = 1
+    elif email=='neilljd@gmail.com': n = 3
+    elif email=='mseibert@carnegiescience.edu': n = 3
+        
     for i in range(n): incs.append(inc)
     return incs 
 ######################################
@@ -61,7 +71,7 @@ def correction(i, email):
     
     a=1
     b=0
-    
+
     if email=='mka7@hawaii.edu':
         a = 0.9962765770447537
         b = 1.632224534453941
@@ -92,6 +102,7 @@ def correction(i, email):
     if email=='helenecourtois33@gmail.com':
         a = 1.0041229424908624
         b = 2.2948858998199455
+
 
 
     return a*i+b
@@ -129,13 +140,13 @@ def addConcern(note, cncrn):
 def getINC(include_Email=None, exclude_Email=[]):
     
     if include_Email==None:
-        emails = ['rbtully1@gmail.com','ekourkchi@gmail.com','mokelkea@hawaii.edu', 'jrl2014@hawaii.edu', 'dschoen@hawaii.edu', 'adholtha@hawaii.edu'] 
+        emails = ['rtully@hawaii.edu', 'rbtully1@gmail.com','ekourkchi@gmail.com','mokelkea@hawaii.edu', 'jrl2014@hawaii.edu', 'dschoen@hawaii.edu', 'adholtha@hawaii.edu'] 
     else: 
         emails = include_Email
     
     
     #### Manoa
-    inFile = 'EDD.inclination.All.Manoa.16Jan2019164558.txt'
+    inFile = 'EDD.inclination.All.Manoa.22May2019172954.txt'
     table = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
     pgc_incout    = table['pgcID']
     inc_incout    = table['inc']
@@ -153,7 +164,7 @@ def getINC(include_Email=None, exclude_Email=[]):
     MU = table['multiple']
     
     #### Guest
-    inFile = 'EDD.inclination.All.Guest.16Jan2019164539.txt'
+    inFile = 'EDD.inclination.All.Guest.22May2019173010.txt'
     table = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
     pgc_incout_    = table['pgcID']
     inc_incout_    = table['inc']
@@ -212,6 +223,8 @@ def incMedian(incDic):
         Keypeople.append(item[0])
         if item[0] == 'rbtully1@gmail.com':
             boss = 'rbtully1@gmail.com'
+        if item[0] == 'rtully@hawaii.edu':
+            boss = 'rtully@hawaii.edu'            
             
 
     flag = 0
@@ -318,7 +331,7 @@ inc_wise_vizier    = table['i']
 b_a_wise_vizier    = table['b_a']
 ######################################
 
-inFile = 'EDD.inclination.All.Manoa.16Jan2019164558.txt'
+inFile = 'EDD.inclination.All.Manoa.22May2019172954.txt'
 table = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
 pgc_incout    = table['pgcID']
 inc_incout    = table['inc']
@@ -326,7 +339,7 @@ flag_incout   = table['flag']
 email         = [' '.join(dummy.split()) for dummy in table['email']]
 
 
-inFile = 'EDD.inclination.All.Guest.16Jan2019164539.txt'
+inFile = 'EDD.inclination.All.Guest.22May2019173010.txt'
 table = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
 pgc_incout_    = table['pgcID']
 inc_incout_    = table['inc']
@@ -334,8 +347,8 @@ flag_incout_   = table['flag']
 email_         = [' '.join(dummy.split()) for dummy in table['email']]
 inputTable_    = [' '.join(dummy.split()) for dummy in table['inputTable']]
 
-#name    = 'Brent'
-#myEmail = 'rbtully1@gmail.com'
+name    = 'Brent'
+myEmail = 'rbtully1@gmail.com'
 
 #name    = 'Ehsan'
 #myEmail = 'ekourkchi@gmail.com'
@@ -367,8 +380,8 @@ inputTable_    = [' '.join(dummy.split()) for dummy in table['inputTable']]
 #name    = 'Michael A.'
 #myEmail = 'mka7@hawaii.edu'
 
-name    = 'Arash'
-myEmail = 'a.danesh61@gmail.com'
+#name    = 'Arash'
+#myEmail = 'a.danesh61@gmail.com'
 
 #name    = 'Charles G.'
 #myEmail = 'cgrubner0@gmail.com'
@@ -406,7 +419,7 @@ myEmail = 'a.danesh61@gmail.com'
 #myEmail     = 'echarraix69@gmail.com'
 #name = 'Emmanuel'
 
-A_emails = ['rbtully1@gmail.com', 'mokelkea@hawaii.edu', 'jrl2014@hawaii.edu', 'dschoen@hawaii.edu', 'mi24@hawaii.edu', 'chuangj@hawaii.edu']
+A_emails = ['rtully@hawaii.edu', 'rbtully1@gmail.com', 'mokelkea@hawaii.edu', 'jrl2014@hawaii.edu', 'dschoen@hawaii.edu', 'mi24@hawaii.edu', 'chuangj@hawaii.edu']
 
 B_emails = ['ekourkchi@gmail.com', 's.eftekharzadeh@gmail.com', 'chasemu@hawaii.edu', 'adholtha@hawaii.edu', 'mka7@hawaii.edu', 'a.danesh61@gmail.com', 'helenecourtois33@gmail.com']
 
@@ -414,11 +427,12 @@ C_emails = ['cgrubner0@gmail.com', 'pascal.jouve@free.fr', 'dlsaintsorny@gmail.c
 
 D_emails = ['henri140860@wanadoo.fr', 'claude.rene21@gmail.com', 'fredwallet@gmail.com', 'joannin.lycee@free.fr', 'bevig434@gmail.com', 'echarraix69@gmail.com']
 
+E_emails = ['pierrefcevey@gmail.com','pierre@macweber.ch', 'arnaudoech@gmail.com', 'lionmarm@gmail.com', 'neilljd@gmail.com', 'mseibert@carnegiescience.edu']
 
 ##############################################################################
 
-#incDic = getINC(include_Email=A_emails+B_emails, exclude_Email=myEmail)
-incDic = getINC(include_Email=A_emails+B_emails+C_emails+D_emails, exclude_Email=myEmail)
+#incDic = getINC(include_Email=A_emails+B_emails+E_emails, exclude_Email=myEmail)
+incDic = getINC(include_Email=A_emails+B_emails+C_emails+D_emails+E_emails, exclude_Email=myEmail)
 
 pgc_common   = []
 old_inc       = []

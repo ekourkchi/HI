@@ -238,7 +238,7 @@ destination = '/home/ehsan/Home/sdss_photometry/'
 location  = '/home/ehsan/db_esn/cf4_sdss/data/'
 
 
-inFile  = 'augment/EDD_distance_cf4_v25.csv'
+inFile  = 'augment/EDD_distance_cf4_v26.csv'
 table   = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
 pgc     = table['pgc']
 ra      = table['ra']

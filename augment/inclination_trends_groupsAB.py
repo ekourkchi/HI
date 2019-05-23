@@ -50,7 +50,19 @@ def add_axis(ax, xlim, ylim):
     x_ax.tick_params(which='minor', length=4, color='#000033', width=1.0, direction='in')
 
 ################################################################# 
-
+######################################
+def rnd_inc(inc):
+    
+            if inc==None: return None
+            d_inc = inc - int(inc)
+            if d_inc>0.5: inc=int(inc)+1
+            elif d_inc<0.5: inc=int(inc)
+            else:
+                rand = random.randint(0,1)
+                if rand==0: inc=int(inc)
+                else: inc=int(inc)+1
+            return inc
+######################################
 def inc_append(incs, email, inc):
     
     n = 0
@@ -83,9 +95,15 @@ def inc_append(incs, email, inc):
     elif email=='echarraix69@gmail.com':
         if inc<85 and inc>50: n=1
         else: n=0
-    
+    elif email=='pierrefcevey@gmail.com': n = 1
+    elif email=='pierre@macweber.ch': n = 1
+    elif email=='arnaudoech@gmail.com': n = 1
+    elif email=='lionmarm@gmail.com': n = 1
+    elif email=='neilljd@gmail.com': n = 3
+    elif email=='mseibert@carnegiescience.edu': n = 3
+        
     for i in range(n): incs.append(inc)
-    return incs
+    return incs 
 ######################################
 def correction(i, email):
     
@@ -124,6 +142,7 @@ def correction(i, email):
         b = 2.2948858998199455
 
 
+
     return a*i+b
 ######################################
 
@@ -159,13 +178,13 @@ def addConcern(note, cncrn):
 def getINC(include_Email=None, exclude_Email=[]):
     
     if include_Email==None:
-        emails = ['rbtully1@gmail.com','ekourkchi@gmail.com','mokelkea@hawaii.edu', 'jrl2014@hawaii.edu', 'dschoen@hawaii.edu', 'adholtha@hawaii.edu'] 
+        emails = ['rtully@hawaii.edu', 'rbtully1@gmail.com','ekourkchi@gmail.com','mokelkea@hawaii.edu', 'jrl2014@hawaii.edu', 'dschoen@hawaii.edu', 'adholtha@hawaii.edu'] 
     else: 
         emails = include_Email
     
     
     #### Manoa
-    inFile = 'EDD.inclination.All.Manoa.16Jan2019164558.txt'
+    inFile = 'EDD.inclination.All.Manoa.22May2019172954.txt'
     table = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
     pgc_incout    = table['pgcID']
     inc_incout    = table['inc']
@@ -183,7 +202,7 @@ def getINC(include_Email=None, exclude_Email=[]):
     MU = table['multiple']
     
     #### Guest
-    inFile = 'EDD.inclination.All.Guest.16Jan2019164539.txt'
+    inFile = 'EDD.inclination.All.Guest.22May2019173010.txt'
     table = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
     pgc_incout_    = table['pgcID']
     inc_incout_    = table['inc']
@@ -242,6 +261,8 @@ def incMedian(incDic):
         Keypeople.append(item[0])
         if item[0] == 'rbtully1@gmail.com':
             boss = 'rbtully1@gmail.com'
+        if item[0] == 'rtully@hawaii.edu':
+            boss = 'rtully@hawaii.edu'            
             
 
     flag = 0
@@ -318,13 +339,11 @@ def incMedian(incDic):
         inc = np.median(incs2)
             
     note = addConcern(note, concerns)
+    #inc = rnd_inc(inc)
     
     return inc, stdev, flag, note, n
 
 #######################################
-
-
-
 
 ######################################
 class cd:
@@ -352,9 +371,11 @@ C_emails = ['joannin.lycee@free.fr', 'pascal.jouve@free.fr', 'bevig434@gmail.com
 
 D_emails = ['henri140860@wanadoo.fr', 'hawaii@udrea.fr', 'fredwallet@gmail.com', 'cgrubner0@gmail.com', 'echarraix69@gmail.com', 'dlsaintsorny@gmail.com']
 
+E_emails = ['pierrefcevey@gmail.com','pierre@macweber.ch', 'arnaudoech@gmail.com', 'lionmarm@gmail.com', 'neilljd@gmail.com', 'mseibert@carnegiescience.edu']
+
 ##############################################################################
 
-incDicA = getINC(include_Email=A_emails+C_emails)
+incDicA = getINC(include_Email=A_emails+C_emails+E_emails)
 incDicB = getINC(include_Email=B_emails+D_emails)
 
 pgc_common   = []

@@ -531,6 +531,12 @@ def inc_append(incs, email, inc):
     elif email=='echarraix69@gmail.com':
         if inc<85 and inc>50: n=1
         else: n=0
+    elif email=='pierrefcevey@gmail.com': n = 1
+    elif email=='pierre@macweber.ch': n = 1
+    elif email=='arnaudoech@gmail.com': n = 1
+    elif email=='lionmarm@gmail.com': n = 1
+    elif email=='neilljd@gmail.com': n = 3
+    elif email=='mseibert@carnegiescience.edu': n = 3
     
     for i in range(n): incs.append(inc)
     return incs 
@@ -607,7 +613,7 @@ def addConcern(note, cncrn):
 def getINC(include_Email=None, exclude_Email=[]):
     
     if include_Email==None:
-        emails = ['rbtully1@gmail.com','ekourkchi@gmail.com','mokelkea@hawaii.edu', 'jrl2014@hawaii.edu', 'dschoen@hawaii.edu', 'adholtha@hawaii.edu'] 
+        emails = ['rtully@hawaii.edu', 'rbtully1@gmail.com','ekourkchi@gmail.com','mokelkea@hawaii.edu', 'jrl2014@hawaii.edu', 'dschoen@hawaii.edu', 'adholtha@hawaii.edu'] 
     else: 
         emails = include_Email
     
@@ -690,6 +696,8 @@ def incMedian(incDic):
         Keypeople.append(item[0])
         if item[0] == 'rbtully1@gmail.com':
             boss = 'rbtully1@gmail.com'
+        if item[0] == 'rtully@hawaii.edu':
+            boss = 'rtully@hawaii.edu' 
             
 
     flag = 0
@@ -1167,7 +1175,7 @@ for i in range(len(pgc_)):
 #####################################################################
 print "Taking Care of inclinations ..."
 
-A_emails = ['rbtully1@gmail.com', 'mokelkea@hawaii.edu', 'jrl2014@hawaii.edu', 'dschoen@hawaii.edu', 'mi24@hawaii.edu', 'chuangj@hawaii.edu']
+A_emails = ['rtully@hawaii.edu', 'rbtully1@gmail.com', 'mokelkea@hawaii.edu', 'jrl2014@hawaii.edu', 'dschoen@hawaii.edu', 'mi24@hawaii.edu', 'chuangj@hawaii.edu']
 
 B_emails = ['ekourkchi@gmail.com', 's.eftekharzadeh@gmail.com', 'chasemu@hawaii.edu', 'adholtha@hawaii.edu', 'mka7@hawaii.edu', 'a.danesh61@gmail.com', 'helenecourtois33@gmail.com']
 
@@ -1175,7 +1183,9 @@ C_emails = ['cgrubner0@gmail.com', 'pascal.jouve@free.fr', 'dlsaintsorny@gmail.c
 
 D_emails = ['henri140860@wanadoo.fr', 'claude.rene21@gmail.com', 'fredwallet@gmail.com', 'joannin.lycee@free.fr', 'bevig434@gmail.com', 'echarraix69@gmail.com']
 
-incDic = getINC(include_Email=A_emails+B_emails+C_emails+D_emails)
+E_emails = ['pierrefcevey@gmail.com','pierre@macweber.ch', 'arnaudoech@gmail.com', 'lionmarm@gmail.com', 'neilljd@gmail.com', 'mseibert@carnegiescience.edu']
+
+incDic = getINC(include_Email=A_emails+B_emails+C_emails+D_emails+E_emails)
 
 
 print "Taking Care of flags ..."

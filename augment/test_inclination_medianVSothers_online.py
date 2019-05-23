@@ -42,7 +42,7 @@ def addConcern(note, cncrn):
 def getINC(exclude_Email=[]):
     
     #### Manoa
-    inFile = 'EDD.inclination.All.Manoa.21Jun2018175238.txt'
+    inFile = 'EDD.inclination.All.Manoa.22May2019172954.txt'
     table = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
     pgc_incout    = table['pgcID']
     inc_incout    = table['inc']
@@ -60,7 +60,7 @@ def getINC(exclude_Email=[]):
     MU = table['multiple']
     
     #### Guest
-    inFile = 'EDD.inclination.All.Guest.21Jun2018175246.txt'
+    inFile = 'EDD.inclination.All.Guest.22May2019173010.txt'
     table = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
     pgc_incout_    = table['pgcID']
     inc_incout_    = table['inc']
@@ -294,7 +294,7 @@ myEmail = 'ekourkchi@gmail.com' ; name='Ehsan'
 
 
 
-inFile = 'EDD.inclination.All.Manoa.30May2018235906.txt'
+inFile = 'EDD.inclination.All.Manoa.22May2019172954.txt'
 table = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
 pgc_incout_    = table['pgcID']
 inc_incout_    = table['inc']
@@ -319,7 +319,7 @@ for i in range(len(pgc_incout_)):
         flag_incout.append(flag_incout_[i])
         
         
-inFile = 'EDD.inclination.All.Guest.30May2018235752.txt'
+inFile = 'EDD.inclination.All.Guest.22May2019173010.txt'
 table = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
 pgc_incout_    = table['pgcID']
 inc_incout_    = table['inc']
