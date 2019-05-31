@@ -499,17 +499,21 @@ def rnd_inc(inc):
                 else: inc=int(inc)+1
             return inc
 ######################################
+
 def inc_append(incs, email, inc):
     
     n = 0
     if email=='rbtully1@gmail.com': n = 4
-    elif email=='ekourkchi@gmail.com': n = 4
+    elif email=='rtully@hawaii.edu': n = 4
+    elif email=='ekourkchi@gmail.com': n = 3
     elif email=='s.eftekharzadeh@gmail.com':
-        if inc>50: n=1
+        if inc>55: n=2
         else: n=0
     elif email=='mokelkea@hawaii.edu': n = 3
     elif email=='chasemu@hawaii.edu': n = 3
-    elif email=='jrl2014@hawaii.edu': n = 2
+    elif email=='jrl2014@hawaii.edu': 
+        if inc<85: n=2
+        else: n=0
     elif email=='dschoen@hawaii.edu': n = 3
     elif email=='adholtha@hawaii.edu': n = 4
     elif email=='chuangj@hawaii.edu': n = 2
@@ -520,69 +524,80 @@ def inc_append(incs, email, inc):
     elif email=='cgrubner0@gmail.com': n = 1
     elif email=='pascal.jouve@free.fr': n = 2
     elif email=='dlsaintsorny@gmail.com': n = 2
-    elif email=='arnaud.ohet@gmail.com': n = 2
+    elif email=='arnaud.ohet@gmail.com': n = 1
     elif email=='hawaii@udrea.fr': n = 2
     elif email=='helenecourtois33@gmail.com': n = 2
     elif email=='claude.rene21@gmail.com': n = 1
     elif email=='fredwallet@gmail.com': n = 1
-    elif email=='henri140860@wanadoo.fr': n = 2
+    elif email=='henri140860@wanadoo.fr': n = 1
     elif email=='joannin.lycee@free.fr': n = 2
     elif email=='bevig434@gmail.com': n = 1
-    elif email=='echarraix69@gmail.com':
-        if inc<85 and inc>50: n=1
-        else: n=0
     elif email=='pierrefcevey@gmail.com': n = 1
     elif email=='pierre@macweber.ch': n = 1
     elif email=='arnaudoech@gmail.com': n = 1
     elif email=='lionmarm@gmail.com': n = 1
     elif email=='neilljd@gmail.com': n = 3
     elif email=='mseibert@carnegiescience.edu': n = 3
-    
+        
     for i in range(n): incs.append(inc)
-    return incs 
+    return incs  
 ######################################
+
 def correction(i, email):
     
     a=1
     b=0
 
     if email=='mka7@hawaii.edu':
-        a = 0.9962765770447537
-        b = 1.632224534453941
+        a = 1.0240107102873541
+        b = -0.6659991913707819
     if email=='chuangj@hawaii.edu':
-        a = 0.9717341859632354
-        b = 3.654944012785386
+        a = 0.9980309937630525
+        b = 1.5788591635122715
     if email=='mi24@hawaii.edu':
-        a = 1.0033220814125834
-        b = 0.9880920297011041
+        a = 1.0072145584376662
+        b = 0.6773836673392425
     if email=='s.eftekharzadeh@gmail.com':
-        a = 0.8743681979165089
-        b = 7.831987496520716
+        a = 0.9068608738758971
+        b = 5.45353754021468
     if email=='arnaud.ohet@gmail.com':
-        a = 0.9049085332042158
-        b = 7.679626830024785
+        a = 0.8858412300804692
+        b = 8.458077633514366
     if email=='cgrubner0@gmail.com':
-        a = 0.8983834757119172
-        b = 8.315207008784302
-    if email=='echarraix69@gmail.com':
-        a = 0.9069401106228983
-        b = 8.603480747378375
+        a = 0.8714538061236891
+        b = 10.305535769873247
     if email=='pascal.jouve@free.fr':
-        a = 1.0410645393211804
-        b = -1.9661414004232223
+        a = 1.0278857971914963
+        b = -1.089179713885328
     if email=='a.danesh61@gmail.com':
-        a = 1.054190817672426 
-        b = -4.115230286293349
+        a = 1.0528898826418465
+        b = -4.145783239004519
     if email=='helenecourtois33@gmail.com':
-        a = 1.0041229424908624
-        b = 2.2948858998199455
-
+        a = 1.0617630700778644
+        b = -1.5237124582869686
+    if email=='dschoen@hawaii.edu':
+        a = 0.9547149246870876
+        b = 2.859742503302656   
+    if email=='jrl2014@hawaii.edu':
+        a = 0.980285620957423
+        b = 0.37282787373070453
+    if email=='chasemu@hawaii.edu':
+        a = 0.9397141156597442
+        b = 4.037537167990864
+    if email=='henri140860@wanadoo.fr':
+        a = 0.9056035997264794
+        b = 6.851826918635101
+    if email=='dlsaintsorny@gmail.com':
+        a = 0.919185341026506
+        b = 5.562153892056073        
 
     return a*i+b
+
 ######################################
 
 def fitFunc(x, a, b):
     return a*x+b
+
 ######################################
 def addNote(note, text):
     
@@ -619,7 +634,7 @@ def getINC(include_Email=None, exclude_Email=[]):
     
     
     #### Manoa
-    inFile = 'EDD.inclination.All.Manoa.23May2019135721.txt'
+    inFile = 'EDD.inclination.All.Manoa.29May2019193223.txt'
     table = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
     pgc_incout    = table['pgcID']
     inc_incout    = table['inc']
@@ -637,7 +652,7 @@ def getINC(include_Email=None, exclude_Email=[]):
     MU = table['multiple']
     
     #### Guest
-    inFile = 'EDD.inclination.All.Guest.23May2019135630.txt'
+    inFile = 'EDD.inclination.All.Guest.29May2019193204.txt'
     table = np.genfromtxt(inFile , delimiter='|', filling_values=None, names=True, dtype=None)
     pgc_incout_    = table['pgcID']
     inc_incout_    = table['inc']
