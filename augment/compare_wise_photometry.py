@@ -33,7 +33,7 @@ def QA_WISE_DONE(pgc, ra):
     
     global wise_name, wise_pgc
     
-    databse = '/run/media/ehsan/6ccd3c78-12e8-4f00-815d-faf200b314cf/ehsan/db_esn/'+'/cf4_wise/data/'
+    databse = '/home/ehsan/db_esn/'+'/cf4_wise/data/'
     
     if pgc in wise_pgc:
         i_lst = np.where(pgc == wise_pgc)

@@ -88,7 +88,7 @@ def singlePlot(ax, pgc_ESN, pgc_ext, mag_ESN, mag_ext, qlt, color='red', xtitle=
     
 
 ########################################################### Begin
-inFile  = 'EDD_distance_cf4_v24.csv'
+inFile  = 'EDD_distance_cf4_v27.csv'
 table   = np.genfromtxt(inFile , delimiter='|', filling_values=-1, names=True, dtype=None)
 
 pgc_ESN = table['pgc']
@@ -176,41 +176,41 @@ IT = table['IT']
 
 
 
-#magX = []
-#magY = []
+magX = []
+magY = []
 
-#for i in range(len(pgc_hall)):
-    #if pgc_hall[i] in pgc_ESN:
-        #j = np.where(pgc_ESN==pgc_hall[i])
+for i in range(len(pgc_hall)):
+    if pgc_hall[i] in pgc_ESN:
+        j = np.where(pgc_ESN==pgc_hall[i])
         
-        #if Wqlt[j][0]>=3:
-           #magX.append(np.float("%.2f"%i_mag_hall[i]))
-           #magY.append(np.float("%.2f"%i_mag_ESN[j][0]))
+        if Sqlt[j][0]>3:
+           magX.append(np.float("%.2f"%i_mag_hall[i]))
+           magY.append(np.float("%.2f"%i_mag_ESN[j][0]))
 
-#magX = np.asarray(magX)
-#magY = np.asarray(magY)
+magX = np.asarray(magX)
+magY = np.asarray(magY)
 
-#fig = plt.figure(figsize=(6,4), dpi=100)
-#fig.subplots_adjust(top=0.95, bottom=0.15, left=0.2, right=0.98)
-#ax = fig.add_subplot(111)
+fig = plt.figure(figsize=(6,4), dpi=100)
+fig.subplots_adjust(top=0.95, bottom=0.15, left=0.2, right=0.98)
+ax = fig.add_subplot(111)
 
 
-#ax.plot(magX, magX-magY, '.', color='k', alpha=0.5)
-#ax.plot([7,17], [0,0], 'k:')
+ax.plot(magY, magX-magY, '.', color='k', alpha=0.15)
+ax.plot([7,17], [0,0], 'k:')
 
-#xlim=[7,17]; ylim=[-0.75,0.75]
-#add_axis(ax,xlim,ylim)
-#ax.set_xlabel('$[i]_{Hall12}$', fontsize=14)
-#ax.set_ylabel('$[i]_{Hall12}-[i]_{Ehsan}$', fontsize=14)
+xlim=[7,17]; ylim=[-0.75,0.75]
+add_axis(ax,xlim,ylim)
+ax.set_xlabel('$[i]_{this\/\/ study}$', fontsize=16)
+ax.set_ylabel('$[i]_{Hall12}-[i]_{this\/\/ study}$', fontsize=16)
 
-#delta = magY-magX
-#mean = np.mean(delta)
-#medain = np.median(delta)
-#stdev = np.std(delta)
+delta = magY-magX
+mean = np.mean(delta)
+medain = np.median(delta)
+stdev = np.std(delta)
 
-#ax.text(8,-0.4, "median: "+'%.2f'%medain, fontsize=11)
-#ax.text(8,-0.5, "mean: "+'%.2f'%mean, fontsize=11)
-#ax.text(8,-0.6, "$\sigma$: "+'%.2f'%stdev, fontsize=11)
+ax.text(8,-0.4, "median: "+'%.2f'%medain, fontsize=12)
+ax.text(8,-0.5, "mean: "+'%.2f'%mean, fontsize=12)
+ax.text(8,-0.6, "$\sigma$: "+'%.2f'%stdev+'  mag' , fontsize=12)
 
 ################################################################# 
 #fig = py.figure(figsize=(13, 5), dpi=100)   
@@ -334,57 +334,65 @@ IT = table['IT']
 
 
 
-magX = []
-magY = []
+#magX = []
+#magY = []
 
-for i in range(len(pgc_Ntab)):
-    if pgc_Ntab[i] in pgc_ESN:
-        j = np.where(pgc_ESN==pgc_Ntab[i])
+#for i in range(len(pgc_Ntab)):
+    #if pgc_Ntab[i] in pgc_ESN:
+        #j = np.where(pgc_ESN==pgc_Ntab[i])
         
-        if Sqlt[j][0]>3 and Wqlt[j][0]>3 and I_mag_Ntab[i]>0:
+        #if Sqlt[j][0]>3 and Wqlt[j][0]>3 and I_mag_Ntab[i]>0:
            
-           g = g_mag_ESN[j][0]
-           r = r_mag_ESN[j][0]
-           ii = i_mag_ESN[j][0]
-           z = z_mag_ESN[j][0]
+           #g = g_mag_ESN[j][0]
+           #r = r_mag_ESN[j][0]
+           #ii = i_mag_ESN[j][0]
+           #z = z_mag_ESN[j][0]
 
-           #magX.append(np.float("%.2f"%I_mag_Ntab[i]))
-           #I1 = r - 1.2444*(r - ii) - 0.3820 #  sigma = 0.0078
-           #I2 = ii - 0.3780*(ii - z)  -0.3974 #  sigma = 0.0063           
-           #magY.append(0.5*(I1+I2))
+           ##magX.append(np.float("%.2f"%I_mag_Ntab[i]))
+           ##I1 = r - 1.2444*(r - ii) - 0.3820 #  sigma = 0.0078
+           ##I2 = ii - 0.3780*(ii - z)  -0.3974 #  sigma = 0.0063           
+           ##magY.append(0.5*(I1+I2))
            
-           if r-ii<0.95:
-                magX.append(np.float("%.2f"%I_mag_Ntab[i]))
-                I = ii-0.14*(g-r)-0.35
-                ##I = 1.017*I-0.221
-                magY.append(I)
+           #if r-ii<0.95:
+                #magX.append(np.float("%.2f"%I_mag_Ntab[i]))
+                #I = ii-0.14*(g-r)-0.35
+                ###I = 1.017*I-0.221
+                #magY.append(I)
 
-magX = np.asarray(magX)
-magY = np.asarray(magY)
+#magX = np.asarray(magX)
+#magY = np.asarray(magY)
 
-fig = plt.figure(figsize=(6,4), dpi=100)
-fig.subplots_adjust(top=0.95, bottom=0.15, left=0.2, right=0.98)
-ax = fig.add_subplot(111)
+#fig = plt.figure(figsize=(6,4), dpi=100)
+#fig.subplots_adjust(top=0.95, bottom=0.15, left=0.2, right=0.98)
+#ax = fig.add_subplot(111)
 
 
-ax.plot(magX, magX-magY, '.', color='g', alpha=0.5)
-ax.plot([7,16], [0,0], 'k:')
+#ax.plot(magX, magX-magY, '.', color='g', alpha=0.5)
+#ax.plot([7,16], [0,0], 'k:')
 
-xlim=[7,16]; ylim=[-0.75,0.75]
-add_axis(ax,xlim,ylim)
-ax.set_xlabel('$[I]_{Neil14}$', fontsize=14)
-ax.set_ylabel('$[I]_{Neil14}-I^c_{sdss}$', fontsize=14)
+#xlim=[7,16]; ylim=[-0.75,0.75]
+#add_axis(ax,xlim,ylim)
+#ax.set_xlabel('$[I]_{Neil14}$'+'  [mag]', fontsize=16)
+#ax.set_ylabel('$[I]_{Neil14}-I^c_{sdss}$'+'  [mag]', fontsize=16)
 
-delta = magX-magY
-mean = np.mean(delta)
-medain = np.median(delta)
-stdev = np.std(delta)
+#delta = magX-magY
+#mean = np.mean(delta)
+#medain = np.median(delta)
+#stdev = np.std(delta)
 
-ax.text(8,-0.4, "median: "+'%.2f'%medain, fontsize=11)
-ax.text(8,-0.5, "mean: "+'%.2f'%mean, fontsize=11)
-ax.text(8,-0.6, "$\sigma$: "+'%.2f'%stdev, fontsize=11)
-ax.text(8,0.6, "$I^c_{sdss}=i-0.14(g-r)-0.35$", fontsize=11)
-#ax.text(8,0.6, "$I^c_{sdss}$: Lupton (2005)", fontsize=11)
+#ax.text(8,-0.4, "median: "+'%.2f'%medain, fontsize=11)
+#ax.text(8,-0.5, "mean: "+'%.2f'%mean, fontsize=11)
+#ax.text(8,-0.6, "$\sigma$: "+'%.2f'%stdev, fontsize=11)
+#ax.text(8,0.5, "$I^c_{sdss}=i-0.14(g-r)-0.35$", fontsize=13)
+##ax.text(8,0.6, "$I^c_{sdss}$: Lupton (2005)", fontsize=11)
+
+
+for tick in ax.xaxis.get_major_ticks():
+            tick.label.set_fontsize(14) 
+for tick in ax.yaxis.get_major_ticks():
+            tick.label.set_fontsize(14) 
+
+#print len(magX)
 
 plt.show()
 
