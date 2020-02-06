@@ -50,6 +50,11 @@ def add_axis(ax, xlim, ylim):
     x_ax.xaxis.set_minor_locator(MultipleLocator(0.5))
     x_ax.tick_params(which='major', length=5, width=1.0, direction='in')
     x_ax.tick_params(which='minor', length=2, color='#000033', width=1.0, direction='in')
+    
+    for tick in ax.xaxis.get_major_ticks():
+            tick.label.set_fontsize(14) 
+    for tick in ax.yaxis.get_major_ticks():
+            tick.label.set_fontsize(14) 
 ################################################################# 
 def singlePlot(ax, incX, incY, inc_=[85,90], xlim=[-9,9], ylim=[0,0.35], xlabel=False, ylabel=False):
 
@@ -85,22 +90,22 @@ def singlePlot(ax, incX, incY, inc_=[85,90], xlim=[-9,9], ylim=[0,0.35], xlabel=
     #ax.set_xlim(xlim)
     #ax.set_ylim(ylim)
 
-    if xlabel: ax.set_xlabel('$inc.-inc._{median} \/\/$[degree]', fontsize=14)
-    if ylabel: ax.set_ylabel('Normalized density', fontsize=14)
+    if xlabel: ax.set_xlabel('$inc.-inc._{median} \/\/$[degree]', fontsize=16)
+    if ylabel: ax.set_ylabel('Normalized density', fontsize=16)
 
     add_axis(ax,xlim,ylim)
 
     Ylm = ax.get_ylim() ; Xlm = ax.get_xlim()
     x0 = 0.95*Xlm[0]+0.05*Xlm[1]
     y0 = 0.15*Ylm[0]+0.85*Ylm[1]
-    ax.text(x0,y0, '$\sigma_{68\%}$='+"%.1f" % (sigma)+'  [deg]', color='k', fontsize=11)
+    ax.text(x0,y0, '$\sigma_{68\%}$='+"%.1f" % (sigma)+'  [deg]', color='k', fontsize=14)
     y0 = 0.35*Ylm[0]+0.65*Ylm[1]
     ax.text(x0,y0, "N= "+str(size), color='k', fontsize=11)
     y0 = 0.25*Ylm[0]+0.75*Ylm[1]
-    ax.text(x0,y0, "std= "+'%.1f'%np.std(S)+'  [deg]', color='k', fontsize=11)    
+    #ax.text(x0,y0, "std= "+'%.1f'%np.std(S)+'  [deg]', color='k', fontsize=11)    
     x0 = 0.35*Xlm[0]+0.65*Xlm[1]
     y0 = 0.15*Ylm[0]+0.85*Ylm[1]
-    ax.text(x0,y0, str(inc0)+'$ \leqslant inc < $'+str(inc1), color='b', fontsize=11)
+    ax.text(x0,y0, str(inc0)+'$ \leqslant inc < $'+str(inc1), color='b', fontsize=14)
 ######################################
 def rnd_inc(inc):
     

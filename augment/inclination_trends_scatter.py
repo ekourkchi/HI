@@ -40,6 +40,11 @@ def add_axis(ax, xlim, ylim):
     x_ax.minorticks_on()
     x_ax.tick_params(which='major', length=5, width=1.0, direction='in')
     x_ax.tick_params(which='minor', length=2, color='#000033', width=1.0, direction='in')
+    
+    for tick in ax.xaxis.get_major_ticks():
+            tick.label.set_fontsize(14) 
+    for tick in ax.yaxis.get_major_ticks():
+            tick.label.set_fontsize(14) 
 ################################################################# 
 ######################################
 def rnd_inc(inc):
@@ -424,7 +429,7 @@ for incl in np.arange(40,90,2):
 Linc=np.asarray(Linc) 
 Linc_err=np.asarray(Linc_err) 
 LincY=np.asarray(LincY)  
-ax.errorbar(Linc, LincY, yerr=Linc_err, fmt='o') 
+ax.errorbar(Linc, LincY*0, yerr=Linc_err, fmt='o') 
 
 delta=incY-incX
 delta = delta[np.where(delta<8)]
@@ -446,8 +451,8 @@ ax.tick_params(which='major', length=5, width=2.0, direction='in')
 ax.tick_params(which='minor', length=2, color='#000033', width=1.0, direction='in')
 ax.minorticks_on()
 
-ax.set_xlabel(r'$inc.$'+' (median) [deg]', fontsize=14)
-ax.set_ylabel(r'$inc.$'+' (measured-median) [deg]', fontsize=14)
+ax.set_xlabel(r'$inc._{median} \/\/$[deg]', fontsize=14)
+ax.set_ylabel('$inc.-inc._{median} \/\/$[deg]', fontsize=14)
 
 
 ###########################################################################
