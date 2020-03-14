@@ -47,7 +47,7 @@ def add_axis(ax, xlim, ylim):
     x_ax.tick_params(which='minor', length=2, color='#000033', width=1.0, direction='in')
 ################################################################# 
     
-def singlePlot(ax, pgc_ESN, pgc_ext, mag_ESN, mag_ext, qlt, color='red', xtitle='SDSS-r [mag]', ytitle='$\Delta [mag]$', xlim=[6,20], ylim=[-0.4,0.4]):
+def singlePlot(ax, pgc_ESN, pgc_ext, mag_ESN, mag_ext, qlt, color='red', xtitle='SDSS-r [mag]', ytitle='$\Delta [mag]$', xlim=[6,20], ylim=[-0.4,0.4], band=''):
 
     magX = []
     magY = []
@@ -126,6 +126,9 @@ def singlePlot(ax, pgc_ESN, pgc_ext, mag_ESN, mag_ext, qlt, color='red', xtitle=
     ax.plot(X_, median_, 'k-')
     ax.plot(X_, median_+stdev_, 'k--')
     ax.plot(X_, median_-stdev_, 'k--')
+    
+    
+    ax.text(7,0.30, band, fontsize=11)
         
 
 
@@ -185,28 +188,28 @@ p = 0
 
 
 ax = plt.subplot(gs[p]) ; p+=1 
-singlePlot(ax, pgc_ESN, pgc_ESN, u_mag_ESN, u_mag_prime, Sqlt, color='blue', xtitle='$u_{iso}$', ytitle='$u_{iso}-(u_{25.5}+\Delta u_{ext})$')
+singlePlot(ax, pgc_ESN, pgc_ESN, u_mag_ESN, u_mag_prime, Sqlt, color='blue', xtitle='$u_{iso}$', ytitle='$u_{asy}-(u_{25.5}+\Delta u_{ext})$', band='u-band')
 
 ax = plt.subplot(gs[p]) ; p+=1 
-singlePlot(ax, pgc_ESN, pgc_ESN, g_mag_ESN, g_mag_prime, Sqlt, color='green', xtitle='$g_{iso}$', ytitle='$g_{iso}-(g_{25.5}+\Delta g_{ext})$')
+singlePlot(ax, pgc_ESN, pgc_ESN, g_mag_ESN, g_mag_prime, Sqlt, color='green', xtitle='$g_{iso}$', ytitle='$g_{asy}-(g_{25.5}+\Delta g_{ext})$', band='g-band')
 
 ax = plt.subplot(gs[p]) ; p+=1 
-singlePlot(ax, pgc_ESN, pgc_ESN, r_mag_ESN, r_mag_prime, Sqlt, color='red', xtitle='$r_{iso}$', ytitle='$r_{iso}-(r_{25.5}+\Delta r_{ext})$')
-
-
-ax = plt.subplot(gs[p]) ; p+=1 
-singlePlot(ax, pgc_ESN, pgc_ESN, i_mag_ESN, i_mag_prime, Sqlt, color='orange', xtitle='$i_{iso}$', ytitle='$i_{iso}-(i_{25.5}+\Delta i_{ext})$')
+singlePlot(ax, pgc_ESN, pgc_ESN, r_mag_ESN, r_mag_prime, Sqlt, color='red', xtitle='$r_{iso}$', ytitle='$r_{asy}-(r_{25.5}+\Delta r_{ext})$', band='r-band')
 
 
 ax = plt.subplot(gs[p]) ; p+=1 
-singlePlot(ax, pgc_ESN, pgc_ESN, z_mag_ESN, z_mag_prime, Sqlt, color='maroon', xtitle='$z_{iso}$', ytitle='$z_{iso}-(z_{25.5}+\Delta z_{ext})$')
-
-ax = plt.subplot(gs[p]) ; p+=1 
-singlePlot(ax, pgc_ESN, pgc_ESN, w1_mag_ESN, w1_mag_prime, Wqlt, color='purple', xtitle='$W1_{iso}$', ytitle='$W1_{iso}-(W1_{25.5}+\Delta W1_{ext})$')
+singlePlot(ax, pgc_ESN, pgc_ESN, i_mag_ESN, i_mag_prime, Sqlt, color='orange', xtitle='$i_{iso}$', ytitle='$i_{asy}-(i_{25.5}+\Delta i_{ext})$', band='i-band')
 
 
 ax = plt.subplot(gs[p]) ; p+=1 
-singlePlot(ax, pgc_ESN, pgc_ESN, w2_mag_ESN, w2_mag_prime, Wqlt, color='deeppink', xtitle='$W2_{iso}$', ytitle='$W2_{iso}-(W2_{25.5}+\Delta W2_{ext})$')
+singlePlot(ax, pgc_ESN, pgc_ESN, z_mag_ESN, z_mag_prime, Sqlt, color='maroon', xtitle='$z_{iso}$', ytitle='$z_{asy}-(z_{25.5}+\Delta z_{ext})$', band='z-band')
+
+ax = plt.subplot(gs[p]) ; p+=1 
+singlePlot(ax, pgc_ESN, pgc_ESN, w1_mag_ESN, w1_mag_prime, Wqlt, color='purple', xtitle='$W1_{iso}$', ytitle='$W1_{asy}-(W1_{25.5}+\Delta W1_{ext})$', band='W1-band')
+
+
+ax = plt.subplot(gs[p]) ; p+=1 
+singlePlot(ax, pgc_ESN, pgc_ESN, w2_mag_ESN, w2_mag_prime, Wqlt, color='deeppink', xtitle='$W2_{iso}$', ytitle='$W2_{asy}-(W2_{25.5}+\Delta W2_{ext})$', band='W2-band')
 
 ################################################################# 
 
